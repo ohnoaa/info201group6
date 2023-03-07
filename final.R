@@ -68,6 +68,7 @@ ui <- fluidPage(
                         account. Go to", a(href = "https://www.kaggle.com/datasets/malihachaity/heuristic-model?resource=download",
                         "Kaggle Seattle Weather"), "to find out more.")
              ),
+             ## widget 1:
              tabPanel(strong("Widget 1 - Average Temperatures"),
                       sidebarLayout(
                         sidebarPanel(
@@ -109,7 +110,8 @@ ui <- fluidPage(
                         )
                       )
              ),
-           tabPanel(strong("Widget 2 - Total Precipitation"),
+             ## widget 2:
+             tabPanel(strong("Widget 2 - Total Precipitation"),
                     sidebarLayout(
                       sidebarPanel(
                         fluidRow(
@@ -138,6 +140,7 @@ ui <- fluidPage(
                       )
                     )
               ),
+             ## widget 3:
              tabPanel(strong("Widget 3 - Temperature and Precipitation Correlation"),
                       sidebarLayout(
                         sidebarPanel(
@@ -167,6 +170,7 @@ ui <- fluidPage(
                         )
                       )
              ),
+             ## conclusion:
              tabPanel(strong("Conclusion"),
                       fluidRow(
                         column(12, 
@@ -223,7 +227,7 @@ ui <- fluidPage(
   )
 )
 
-
+## server
 server <- function(input, output) {
   ## widget 1 page
     ## scatter plot information
@@ -263,7 +267,7 @@ server <- function(input, output) {
         })
   
   ## widget 2
-    ## radio buttons:
+    ## radio buttons / Meaningful widget labels
     output$decades <- renderUI({
       radioButtons("decadescheck",  label = h5("Choose a decade:"),
                    choices = unique(weather_edit$DECADE))
@@ -316,7 +320,7 @@ server <- function(input, output) {
         })
   
   ## conclusion
-    ## barplot1:
+    ## barplot1 / A specific piece of data, table, or chart that demonstrates the pattern/insight
         output$barplot1 <- renderPlot({
           weather_edit %>% 
             filter(DECADE == 1960) %>% 
