@@ -35,9 +35,6 @@ weather_edit <- weather_edit %>%
       mutate("DECADE" = (YEAR %/% 10)*10)
 
 
-    
-    ## filter by season - need to determine which months relate to what 
-
 
 ## ui
 ui <- fluidPage(
